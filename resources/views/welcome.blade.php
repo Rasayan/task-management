@@ -7,6 +7,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="w-screen h-screen flex justify-center items-center box-border">
-    <div id="app" class="w-full h-full flex flex-col justify-start items-center"></div>
+    <div id="app" class="w-full h-full flex justify-between items-center"></div>
 </body>
 </html>

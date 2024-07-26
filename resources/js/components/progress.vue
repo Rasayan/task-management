@@ -13,7 +13,12 @@
                         <h3 class="text-lg w-1/2 text-left">go to School</h3>
 
                         <div class="flex justify-end items-center w-1/2 pr-4 gap-4">
-                            <a href="#" class="text-md text-lg text-zinc-500">&#x260D;</a>
+                            <a href="#" 
+                                @click.prevent="toggleOptions" 
+                                class="text-md text-lg text-zinc-500 relative">
+                                &#x260D;
+                                <options v-if="showOptions" class="absolute top-full  right-2"/>
+                            </a>
                             <a href="#" class="text-md text-lg text-red-800">&#x2715;</a>
                         </div>
                     </div>
@@ -29,7 +34,30 @@
 </template>
 
 <script>
+    import options from './options.vue'
     export default {
+        components: { options },
         name: 'progress',
+        data() {
+    return {
+      showOptions: false
+    }
+  },
+  methods: {
+    toggleOptions() {
+      this.showOptions = !this.showOptions
+    },
+    closeOptions(event) {
+      if (!event.target.closest('.relative')) {
+        this.showOptions = false
+      }
+    }
+  },
+  mounted() {
+    document.addEventListener('click', this.closeOptions)
+  },
+  beforeUnmount() {
+    document.removeEventListener('click', this.closeOptions)
+  }
     }
 </script>
