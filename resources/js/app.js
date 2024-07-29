@@ -1,6 +1,10 @@
-import './bootstrap';
 import { createApp } from 'vue';
 import App from './App.vue';
-import '../css/app.css';
+import axios from './axios'; // Adjust the path as needed
 
-createApp(App).mount("#app");
+const app = createApp(App);
+
+// Optionally, provide axios globally
+app.config.globalProperties.$axios = axios;
+
+app.mount('#app');
